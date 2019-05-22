@@ -1,0 +1,32 @@
+<% include partials/header.ejs %>
+    <% if (tasks.length > 0) {%>
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Task Name</th>
+            <th scope="col">Task Description</th>
+            <th scope="col">Task Date</th>
+            <th scope="col">Task Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.forEach((task, index) => { %>
+          <tr>
+            <th><%= task.id %></th>
+            <th><%= task.name %></th>
+            <td><%= task.description %></td>
+            <td><%= task.date %></td>
+            <td scope="col">
+              <a href="/edit/<%= task.id %>" target="_blank" rel="noopener" class="btn btn-primary">Edit</a>
+              <a href="/delete/<%= task.id %>" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p>No tasks found. Go <a href="/add">here</a> to add tasks.</p>
+    <% } %>
+</body>
+</html>
